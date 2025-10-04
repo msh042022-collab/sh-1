@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل التدريب الذاتي - كلية التقنية للبنات بنجران</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4bb543;
+            --warning: #ffd166;
+            --gradient: linear-gradient(135deg, #4361ee, #3a0ca3);
+            --gradient-light: linear-gradient(135deg, #4cc9f0, #4361ee);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.7;
+            font-weight: 400;
+            font-family: 'Tajawal', sans-serif;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* الترويسة */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 25px 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .logo {
+            width: 320px; /* تكبير 4 أضعاف من 80px إلى 320px */
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* يجعل الشعار أبيض */
+        }
+        
+        .title-section h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+        
+        .title-section p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* التنقل */
+        nav {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            position: relative;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 5px 0;
+        }
+        
+        .nav-links::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .nav-links li {
+            margin: 0 2px;
+            flex-shrink: 0;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 0.85rem;
+        }
+        
+        .nav-links a::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            background: rgba(67, 97, 238, 0.05);
+        }
+        
+        .nav-links a:hover::before, .nav-links a.active::before {
+            width: 100%;
+        }
+        
+        .nav-links i {
+            font-size: 1rem;
+        }
+        
+        /* قائمة الهواتف */
+        .mobile-menu-btn {
+            display: none;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-nav-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        .mobile-nav-links {
+            list-style: none;
+            margin-top: 40px;
+        }
+        
+        .mobile-nav-links li {
+            margin-bottom: 10px;
+        }
+        
+        .mobile-nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: var(--dark);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-links a.active, .mobile-nav-links a:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        /* المحتوى الرئيسي */
+        main {
+            padding: 30px 0;
+        }
+        
+        .booklet {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .page {
+            padding: 25px 20px;
+            display: none;
+            min-height: auto;
+        }
+        
+        .page.active {
+            display: block;
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .page-header::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+        
+        .page-header h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .page-header p {
+            color: var(--dark);
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .content-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: var(--radius);
+            background: var(--light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-right: 4px solid var(--primary);
+        }
+        
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .content-section h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed rgba(67, 97, 238, 0.3);
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .content-section h3 i {
+            color: var(--accent);
+        }
+        
+        .content-section p {
+            margin-bottom: 12px;
+            text-align: justify;
+            font-size: 0.95rem;
+        }
+        
+        .content-section ul {
+            padding-right: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-right: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .content-section li:before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            right: -15px;
+            font-size: 1.3rem;
+        }
+        
+        .highlight-box {
+            background: var(--gradient-light);
+            color: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+        }
+        
+        .highlight-box p {
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        
+        .highlight-box ul {
+            padding-right: 15px;
+        }
+        
+        .highlight-box li:before {
+            color: var(--warning);
+        }
+        
+        .trainer-message {
+            background: var(--light);
+            padding: 25px;
+            border-radius: var(--radius);
+            margin-top: 30px;
+            position: relative;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(67, 97, 238, 0.1);
+        }
+        
+        .trainer-message:before {
+            content: """;
+            font-size: 60px;
+            color: var(--accent);
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-family: serif;
+        }
+        
+        .trainer-info {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.1);
+        }
+        
+        .trainer-info p {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        /* التذييل */
+        footer {
+            background: var(--gradient);
+            color: white;
+            padding: 30px 0 20px;
+            margin-top: 40px;
+        }
+        
+        .contact-info {
+            text-align: center;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            font-size: 0.9rem;
+        }
+        
+        .contact-email:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* أزرار التنقل بين الصفحات */
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+            font-size: 0.9rem;
+            flex: 1;
+            justify-content: center;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-btn:disabled {
+            background: var(--light);
+            color: var(--dark);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* تقدم الصفحات */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: var(--light);
+            border-radius: 3px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 3px;
+            width: 12.5%;
+            transition: width 0.5s ease;
+        }
+        
+        /* تأثيرات إضافية */
+        .floating-icon {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(67, 97, 238, 0.1);
+            z-index: 1;
+        }
+        
+        .floating-1 { top: 10%; right: 5%; animation: float 6s ease-in-out infinite; }
+        .floating-2 { top: 30%; left: 7%; animation: float 8s ease-in-out infinite; }
+        .floating-3 { bottom: 20%; right: 10%; animation: float 7s ease-in-out infinite; }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 1200px) {
+            .logo {
+                width: 280px;
+                height: 70px;
+            }
+            
+            .title-section h1 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .nav-links a span {
+                display: none;
+            }
+            
+            .nav-links a {
+                padding: 12px 15px;
+            }
+            
+            .nav-links i {
+                font-size: 1.2rem;
+            }
+            
+            .logo {
+                width: 240px;
+                height: 60px;
+            }
+            
+            .title-section h1 {
+                font-size: 1.4rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .logo-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .logo {
+                width: 200px;
+                height: 50px;
+            }
+            
+            .title-section h1 {
+                font-size: 1.3rem;
+            }
+            
+            .title-section p {
+                font-size: 0.85rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            
+            .mobile-nav {
+                display: block;
+            }
+            
+            .page {
+                padding: 20px 15px;
+            }
+            
+            .page-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .content-section {
+                padding: 15px;
+            }
+            
+            .content-section h3 {
+                font-size: 1.1rem;
+            }
+            
+            .trainer-message {
+                padding: 20px;
+            }
+            
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .floating-icon {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .page-header h2 {
+                font-size: 1.3rem;
+            }
+            
+            .content-section h3 {
+                font-size: 1rem;
+            }
+            
+            .content-section p, .content-section li {
+                font-size: 0.9rem;
+            }
+            
+            .nav-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .contact-email {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .logo {
+                width: 160px;
+                height: 40px;
+            }
+            
+            .title-section h1 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="floating-icon floating-1"><i class="fas fa-graduation-cap"></i></div>
+        <div class="floating-icon floating-2"><i class="fas fa-book-open"></i></div>
+        <div class="floating-icon floating-3"><i class="fas fa-laptop-code"></i></div>
+        
+        <div class="container header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="https://tvtc.gov.sa/Style%20Library/tvtc/images/logo.svg" alt="شعار المؤسسة العامة للتدريب التقني والمهني">
+                </div>
+                <div class="title-section">
+                    <h1>كلية التقنية للبنات بنجران</h1>
+                    <p>دليل التدريب الذاتي للمتدربات</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-page="intro"><i class="fas fa-home"></i> <span>مقدمة</span></a></li>
+                <li><a href="#" class="nav-link" data-page="objectives"><i class="fas fa-bullseye"></i> <span>الأهداف</span></a></li>
+                <li><a href="#" class="nav-link" data-page="mechanism"><i class="fas fa-cogs"></i> <span>آلية التدريب</span></a></li>
+                <li><a href="#" class="nav-link" data-page="procedures"><i class="fas fa-tasks"></i> <span>الإجراءات التنظيمية</span></a></li>
+                <li><a href="#" class="nav-link" data-page="rights"><i class="fas fa-balance-scale"></i> <span>الحقوق والواجبات</span></a></li>
+                <li><a href="#" class="nav-link" data-page="exams"><i class="fas fa-file-alt"></i> <span>الاختبارات</span></a></li>
+                <li><a href="#" class="nav-link" data-page="support"><i class="fas fa-hands-helping"></i> <span>الدعم والمتابعة</span></a></li>
+                <li><a href="#" class="nav-link" data-page="conclusion"><i class="fas fa-flag-checkered"></i> <span>الختام</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- قائمة الهواتف -->
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav-links">
+            <li><a href="#" class="mobile-nav-link active" data-page="intro"><i class="fas fa-home"></i> مقدمة</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="objectives"><i class="fas fa-bullseye"></i> الأهداف</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="mechanism"><i class="fas fa-cogs"></i> آلية التدريب</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="procedures"><i class="fas fa-tasks"></i> الإجراءات التنظيمية</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="rights"><i class="fas fa-balance-scale"></i> الحقوق والواجبات</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="exams"><i class="fas fa-file-alt"></i> الاختبارات</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="support"><i class="fas fa-hands-helping"></i> الدعم والمتابعة</a></li>
+            <li><a href="#" class="mobile-nav-link" data-page="conclusion"><i class="fas fa-flag-checkered"></i> الختام</a></li>
+        </ul>
+    </div>
+    
+    <main>
+        <div class="container">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="booklet">
+                <!-- الصفحة 1: المقدمة -->
+                <div class="page active" id="intro">
+                    <div class="page-header">
+                        <h2>مقدمة عن التدريب الذاتي</h2>
+                        <p>إعداد: المدربة شروق الحربي – منسقة التدريب الذاتي</p>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-lightbulb"></i> مفهوم التدريب الذاتي</h3>
+                        <p>التدريب الذاتي هو <strong>أسلوب تدريب يعتمد على جهد المتدرب الشخصي</strong> في التعلم واكتساب المهارات باستخدام التقنيات الحديثة والوسائل الإلكترونية، دون الحاجة إلى حضور محاضرات في أوقات محددة.</p>
+                        
+                        <div class="highlight-box">
+                            <p>يهدف هذا النمط إلى:</p>
+                            <ul>
+                                <li>تمكين المتدرب من التعلم وفق سرعته الخاصة.</li>
+                                <li>تطوير مهارات البحث والتعلم الذاتي مدى الحياة.</li>
+                                <li>رفع جودة العملية التدريبية باستخدام أدوات التقنية الحديثة.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="page-navigation">
+                        <button class="nav-btn prev" disabled><i class="fas fa-arrow-right"></i> السابق</button>
+                        <button class="nav-btn next" data-next="objectives">التالي <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+                
+                <!-- الصفحة 2: الأهداف -->
+                <div class="page" id="objectives">
+                    <div class="page-header">
+                        <h2>أهداف التدريب الذاتي</h2>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-bullseye"></i> يهدف هذا النمط إلى:</h3>
+                        <ul>
+                            <li>تمكين المتدرب من التعلم وفق سرعته الخاصة.</li>
+                            <li>تطوير مهارات البحث والتعلم الذاتي مدى الحياة.</li>
+                            <li>رفع جودة العملية التدريبية باستخدام أدوات التقنية الحديثة.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-navigation">
+                        <button class="nav-btn prev" data-prev="intro"><i class="fas fa-arrow-right"></i> السابق</button>
+                        <button class="nav-btn next" data-next="mechanism">التالي <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+                
+                <!-- الصفحة 3: آلية التدريب -->
+                <div class="page" id="mechanism">
+                    <div class="page-header">
+                        <h2>آلية التدريب الذاتي</h2>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-cogs"></i> تسجيل المقررات:</h3>
+                        <ul>
+                            <li>يتم تسجيل المقررات بنمط التدريب الذاتي في نظام <em>رايات</em> حسب الخطة التدريبية.</li>
+                            <li>لا يسمح بتسجيل المقرر نفسه بنمطين تدريبيين في نفس الفصل.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-laptop"></i> المنصة الإلكترونية:</h3>
+                        <ul>
+                            <li>يعتمد التدريب على <strong>المنصة الإلكترونية المعتمدة</strong>، حيث يتمكن المتدرب من الدخول للمحتوى الإلكتروني في أي وقت.</li>
+                            <li>يجب على المتدرب دراسة المحتوى المقرر والتفاعل في حلقات النقاش التي تُدار من قبل المدربين المختصين.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-calendar-check"></i> المتابعة والحضور:</h3>
+                        <ul>
+                            <li>لا تُرصد درجات للحضور أو الغياب، لكن الالتزام بدراسة المحتوى والمشاركة في النقاشات ضروري للنجاح.</li>
+                            <li>يمكن للمنشأة إلزام المتدرب بالحضور داخل مقرها عند وجود عوائق تقنية تمنع استكمال التدريب.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-comments"></i> التفاعل والتقييم المستمر:</h3>
+                        <ul>
+                            <li>يُتوقع من المتدرب التفاعل مع المحتوى وطرح الأسئلة عبر المنصات الإلكترونية.</li>
+                            <li>تُوفر المنشأة دعمًا فنيًا وتعليميًا عبر منسق التدريب الذاتي ومشرف التدرب الإلكتروني.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-navigation">
+                        <button class="nav-btn prev" data-prev="objectives"><i class="fas fa-arrow-right"></i> السابق</button>
+                        <button class="nav-btn next" data-next="procedures">التالي <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+                
+                <!-- الصفحة 4: الإجراءات التنظيمية -->
+                <div class="page" id="procedures">
+                    <div class="page-header">
+                        <h2>الإجراءات التنظيمية للاختبارات</h2>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-clipboard-check"></i> الاختبار النهائي:</h3>
+                        <ul>
+                            <li>يعقد <strong>حضوريًا داخل المنشأة التدريبية</strong> أو في مركز اختبار دولي معتمد إذا كان المقرر مرتبطًا بشهادة احترافية.</li>
+                            <li>درجة النجاح هي (60 من 100).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-user-clock"></i> غياب الاختبار:</h3>
+                        <ul>
+                            <li>في حال الغياب بعذر مقبول، تُمنح درجة (غير مكتمل – IC).</li>
+                            <li>إذا لم يُقدَّم العذر أو لم يُعد الاختبار، تُرصد درجة (راسب – F).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-file-contract"></i> الاختبارات الموحدة:</h3>
+                        <ul>
+                            <li>تُنظمها الإدارة العامة للتدرب الإلكتروني عبر المنصة المعتمدة.</li>
+                            <li>يتولى منسق التدريب الذاتي تنظيم مواعيد الاختبارات النهائية والتأكد من جاهزية القاعات والمعامل.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-award"></i> الشهادات الاحترافية:</h3>
+                        <ul>
+                            <li>في المقررات التي تعادلها شهادة احترافية، يمكن للمتدرب التقدم لاختبارها في مركز معتمد.</li>
+                            <li>عند النجاح، يتم رفع طلب معادلة الشهادة عبر نظام رايات.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-navigation">
+                        <button class="nav-btn prev" data-prev="mechanism"><i class="fas fa-arrow-right"></i> السابق</button>
+                        <button class="nav-btn next" data-next="rights">التالي <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+                
+                <!-- الصفحة 5: الحقوق والواجبات -->
+                <div class="page" id="rights">
+                    <div class="page-header">
+                        <h2>حقوق وواجبات المتدرب</h2>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-user-check"></i> حقوق وواجبات المتدرب</h3>
+                        <ul>
+                            <li>يحق للمتدرب <strong>التواصل المستمر</strong> مع منسق التدريب الذاتي ومشرف المنصة لأي دعم أو استفسار.</li>
+                            <li>يجب على المتدرب <strong>الالتزام بالسلوك المهني والأخلاقي</strong> خلال التدريب الإلكتروني.</li>
+                            <li>في حال وجود شكوى أو تظلم، يتم رفعها إلى إدارة المنشأة وفق الإجراءات المعتمدة.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-navigation">
+                        <button class="nav-btn prev" data-prev="procedures"><i class="fas fa-arrow-right"></i> السابق</button>
+                        <button class="nav-btn next" data-next="exams">التالي <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+                
+                <!-- الصفحة 6: آلية الاختبارات -->
+                <div class="page" id="exams">
+                    <div class="page-header">
+                        <h2>آلية الاختبارات</h2>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-clipboard-list"></i> الإجراءات التنظيمية للاختبارات</h3>
+                        
+                        <h4>الاختبار النهائي:</h4>
+                        <ul>
+                            <li>يعقد <strong>حضوريًا داخل المنشأة التدريبية</strong> أو في مركز اختبار دولي معتمد إذا كان المقرر مرتبطًا بشهادة احترافية.</li>
+                            <li>درجة النجاح هي (60 من 100).</li>
+                        </ul>
+                        
+                        <h4>غياب الاختبار:</h4>
+                        <ul>
+                            <li>في حال الغياب بعذر مقبول، تُمنح درجة (غير مكتمل – IC).</li>
+                            <li>إذا لم يُقدَّم العذر أو لم يُعد الاختبار، تُرصد درجة (راسب – F).</li>
+                        </ul>
+                        
+                        <h4>الاختبارات الموحدة:</h4>
+                        <ul>
+                            <li>تُنظمها الإدارة العامة للتدرب الإلكتروني عبر المنصة المعتمدة.</li>
+                            <li>يتولى منسق التدريب الذاتي تنظيم مواعيد الاختبارات النهائية والتأكد من جاهزية القاعات والمعامل.</li>
+                        </ul>
+                        
+                        <h4>الشهادات الاحترافية:</h4>
+                        <ul>
+                            <li>في المقررات التي تعادلها شهادة احترافية، يمكن للمتدرب التقدم لاختبارها في مركز معتمد.</li>
+                            <li>عند النجاح، يتم رفع طلب معادلة الشهادة عبر نظام رايات.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page-navigation">
+                        <button class="nav-btn prev" data-prev="rights"><i class="fas fa-arrow-right"></i> السابق</button>
+                        <button class="nav-btn next" data-next="support">التالي <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+                
+                <!-- الصفحة 7: الدعم والمتابعة -->
+                <div class="page" id="support">
+                    <div class="page-header">
+                        <h2>الدعم والمتابعة</h2>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-hands-helping"></i> الدعم المقدم من المنشأة</h3>
+                        <ul>
+                            <li>تعيين <strong>منسق تدريب ذاتي</strong> يتابع تسجيل المتدربين، دعمهم الفني، وتنظيم اختباراتهم.</li>
+                            <li>إشراف <strong>مشرف التدرب الإلكتروني</strong> على المنصة وحلقات النقاش وتقديم الدعم الفني.</li>
+                            <li>متابعة الإدارة لكل ما يخص جودة تنفيذ التدريب الذاتي وتطويره.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="trainer-message">
+                        <h3>كلمة من منسقة التدريب الذاتي – أ. شروق الحربي</h3>
+                        <p>أرحّب بكم أعزائي المتدربين في رحلتكم ضمن مسار <strong>التدريب الذاتي</strong>، هذا النمط المميز الذي يمنحكم فرصة تطوير مهاراتكم بالاعتماد على جهودكم الشخصية، وباستخدام أحدث التقنيات التعليمية.</p>
+                        <p>أتمنى لكم تجربة تدريبية ثرية مليئة بالإنجاز والنجاح، وأثق بقدرتكم على تحقيق أهدافكم بكل تميز وإبداع 🌟</p>
+                        
+                        <div class="trainer-info">
+                            <p><strong>ومن منطلق مهامي كمنسقة للتدريب الذاتي، أؤكد حرصي الدائم على:</strong></p>
+                            <ul>
+                                <li><strong>متابعة المشكلات التي تواجه المتدربين والعمل على حلها بالتنسيق مع الجهات المعنية.</strong></li>
+                                <li><strong>تقديم الدعم والمساعدة في إجراءات حجز اختبارات الشهادات الاحترافية.</strong></li>
+                                <li><strong>تفعيل وسائل التواصل معكم والرد على استفساراتكم عبر البريد الإلكتروني الرسمي.</strong></li>
+                            </ul>
+                            <p>مع تمنياتي الصادقة لكم بالتوفيق والنجاح الدائم 🌿</p>
+                        </div>
+                    </div>
+                    
+                    <div class="page-navigation">
+                        <button class="nav-btn prev" data-prev="exams"><i class="fas fa-arrow-right"></i> السابق</button>
+                        <button class="nav-btn next" data-next="conclusion">التالي <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+                
+                <!-- الصفحة 8: الختام والتواصل -->
+                <div class="page" id="conclusion">
+                    <div class="page-header">
+                        <h2>ختام وتوصيات</h2>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3><i class="fas fa-flag-checkered"></i> ختام الرحلة</h3>
+                        <p>نشكر لكم اهتمامكم بالاطلاع على دليل التدريب الذاتي، ونتمنى لكم تجربة تدريبية ناجحة ومثمرة.</p>
+                    </div>
+                    
+                    <div class="page-navigation">
+                        <button class="nav-btn prev" data-prev="support"><i class="fas fa-arrow-right"></i> السابق</button>
+                        <button class="nav-btn next" disabled>النهاية <i class="fas fa-check"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="contact-info">
+                <h3>للتواصل والدعم</h3>
+                <p>كلية التقنية للبنات بنجران</p>
+                <p>منسقة التدريب الذاتي: المدربة شروق الحربي</p>
+                <a href="mailto:shorog.a@tvtc.gov.sa" class="contact-email">
+                    <i class="fas fa-envelope"></i> shorog.a@tvtc.gov.sa
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // التنقل بين الصفحات
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            const pages = document.querySelectorAll('.page');
+            const nextButtons = document.querySelectorAll('.nav-btn.next');
+            const prevButtons = document.querySelectorAll('.nav-btn.prev');
+            const progressBar = document.getElementById('progressBar');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavClose = document.getElementById('mobileNavClose');
+            const overlay = document.getElementById('overlay');
+            
+            // وظيفة لإظهار صفحة محددة وإخفاء الآخرين
+            function showPage(pageId) {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                document.getElementById(pageId).classList.add('active');
+                
+                // تحديث حالة أزرار التنقل
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                mobileNavLinks.forEach(link => {
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                // تحديث شريط التقدم
+                updateProgressBar(pageId);
+                
+                // إغلاق قائمة الهاتف بعد اختيار صفحة
+                closeMobileNav();
+            }
+            
+            // تحديث شريط التقدم
+            function updateProgressBar(pageId) {
+                const pageOrder = ['intro', 'objectives', 'mechanism', 'procedures', 'rights', 'exams', 'support', 'conclusion'];
+                const currentIndex = pageOrder.indexOf(pageId);
+                const progress = ((currentIndex + 1) / 8) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            // فتح قائمة الهاتف
+            function openMobileNav() {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // إغلاق قائمة الهاتف
+            function closeMobileNav() {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            // إضافة مستمعي الأحداث لروابط التنقل
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
+            // إضافة مستمعي الأحداث لروابط التنقل في الهاتف
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                });
+            });
+            
+            // إضافة مستمعي الأحداث لأزرار التالي
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (!this.disabled) {
+                        const nextPage = this.getAttribute('data-next');
+                        if (nextPage) {
+                            showPage(nextPage);
+                        }
+                    }
+                });
+            });
+            
+            // إضافة مستمعي الأحداث لأزرار السابق
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (!this.disabled) {
+                        const prevPage = this.getAttribute('data-prev');
+                        if (prevPage) {
+                            showPage(prevPage);
+                        }
+                    }
+                });
+            });
+            
+            // فتح وإغلاق قائمة الهاتف
+            mobileMenuBtn.addEventListener('click', openMobileNav);
+            mobileNavClose.addEventListener('click', closeMobileNav);
+            overlay.addEventListener('click', closeMobileNav);
+            
+            // إغلاق القائمة بالزر ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeMobileNav();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
